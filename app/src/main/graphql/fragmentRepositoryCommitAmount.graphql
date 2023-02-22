@@ -1,0 +1,9 @@
+fragment RepositoryCommitAmount on Repository{
+    object(expression:"master") {
+        ... on Commit {
+            history {
+                totalCount
+            }
+        }
+    }
+}

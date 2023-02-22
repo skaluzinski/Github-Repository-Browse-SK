@@ -1,0 +1,124 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.apollographql.apollo3'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.githubrepositorybrowsersk'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.githubrepositorybrowsersk"
+        minSdk 27
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.2'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.compose.material:material:1.1.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    //paging3
+    def paging_version = "3.1.1"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // optional - Jetpack Compose integration
+    implementation "androidx.paging:paging-compose:1.0.0-alpha18"
+
+
+    //Material 3
+    implementation "androidx.compose.material3:material3:1.0.1"
+    implementation "androidx.compose.material3:material3-window-size-class:1.0.1"
+
+    //apollo
+    implementation "com.apollographql.apollo3:apollo-runtime:3.7.4"
+    implementation "com.apollographql.apollo3:apollo-normalized-cache:3.7.4"
+    //Hilt
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation "com.google.dagger:hilt-android:2.45"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+
+    //compose-hilt
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
+
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
+    //navigation compose
+    implementation "androidx.navigation:navigation-compose:2.5.3"
+
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
+}
+
+//apollo {
+//    // instruct the compiler to generate Kotlin models
+//    generateKotlinModels.set(true)
+//    packageNamesFromFilePaths()
+//}
+apollo {
+    generateKotlinModels.set(true)
+
+    service("service") {
+        packageName.set("com.example")
+    }
+}

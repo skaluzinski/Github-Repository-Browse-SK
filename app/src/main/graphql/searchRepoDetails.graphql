@@ -1,0 +1,5 @@
+query SearchRepoDetails($name: String!, $owner: String!) {
+    repository(name: $name, owner: $owner) {
+        ...RepositoryDetails
+    }
+}

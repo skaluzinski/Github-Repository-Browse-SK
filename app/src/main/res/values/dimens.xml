@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="medium_padding">16dp</dimen>
+
+
+    <!--    repo list/-->
+    <dimen name="small_repo_card_size">128dp</dimen>
+    <dimen name="small_repo_card_corner_clip">30dp</dimen>
+    <dimen name="repo_list_item_spacing">16dp</dimen>
+
+    <!--    Repo detail-->
+    <dimen name="repo_detail_card_size">160dp</dimen>
+    <dimen name="repo_detail_corner_clip">30dp</dimen>
+</resources>

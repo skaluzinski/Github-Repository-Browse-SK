@@ -1,0 +1,9 @@
+fragment RepositoryDetails on Repository{
+    id
+    name
+    issues {
+        totalCount
+    }
+    description
+    ...RepositoryCommitAmount
+}

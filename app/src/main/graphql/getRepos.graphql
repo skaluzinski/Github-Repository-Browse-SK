@@ -1,0 +1,15 @@
+query getRepos($cursor: String){
+    viewer{
+        repositories( after: $cursor, first: 5) {
+            nodes {
+                ...RepositoryDetails
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+                startCursor
+                hasPreviousPage
+            }
+        }
+    }
+}
